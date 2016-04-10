@@ -1,8 +1,10 @@
-•	Create base classes (System, Game, Player, User)
-•	Create Junit tests for base class functions
-•	Create Menu GUI
-•	Create Game GUI
-•	Create build instructions
-•	Create New User GUI
-•	Add ability to save profiles to view statistics.
-•	Create Stats GUI
+
+                                                                   Status:
+â€¢	Create base classes (SystemMain, Game, Player, User)        Finished
+â€¢	Create Junit tests for base class functions                 To do
+â€¢	Create Menu GUI                                             Finished
+â€¢	Create Game GUI                                             Finished
+â€¢	Create build instructions                                   To do
+â€¢	Create New User GUI                                         To do
+â€¢	Add ability to save profiles to view statistics.            To do
+â€¢	Create Stats GUI                                            To do
