@@ -6,16 +6,16 @@ import java.util.Random;
  */
 public class Game {
 	
-	private Player player1;
-	private Player player2;
-	private int rolls;
-	private int locks;
-	private int die1;
-	private int die2;
-	private int activePlayer;
-	private int round;
+	public Player player1;
+	public Player player2;
+	public int rolls;
+	public int locks;
+	public int die1;
+	public int die2;
+	public int activePlayer;
+	public int round;
 	
-	private GameScreen gameGUI;
+	public GameScreen gameGUI;
 	
 	/**
 	 * Constructor for the game class.
@@ -48,7 +48,7 @@ public class Game {
 	/**
 	 * Method for beginning new turn for player 1
 	 */
-	private void player1Turn()
+	public void player1Turn()
 	{
 		round++;
 		die1 = 0;
@@ -62,7 +62,7 @@ public class Game {
 	/**
 	 * Method for beginning new turn for player 2
 	 */
-	private void player2Turn()
+	public void player2Turn()
 	{
 		die1 = 0;
 		die2 = 0;
@@ -160,7 +160,7 @@ public class Game {
 	/**
 	 * Method to add ten points to current players score if doubles are rolled.
 	 */
-	private void doubleRolled()
+	public void doubleRolled()
 	{
 		if(activePlayer == 1)
 		{
@@ -177,7 +177,7 @@ public class Game {
 	/**
 	 * Method to end game, showing the end of game screen and updating users.
 	 */
-	private void endGame()
+	public void endGame()
 	{
 		if(player1.score > player2.score)//player 1 wins
 		{
@@ -219,7 +219,7 @@ public class Game {
 	/**
 	 * Method to update the stats of the users
 	 */
-	private void updateStats()
+	public void updateStats()
 	{
 		if(player1.score > player1.user.getScore())
 		{
