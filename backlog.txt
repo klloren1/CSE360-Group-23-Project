@@ -1,7 +1,7 @@
 
                                                                    Status:
 •	Create base classes (SystemMain, Game, Player, User)        Finished
-•	Create Junit tests for base class functions                 In progress
+•	Create Junit tests for base class functions                 Finished
 •	Create Menu GUI                                             Finished
 •	Create Game GUI                                             Finished
 •	Create build instructions                                   Finished
