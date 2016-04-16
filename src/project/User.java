@@ -6,11 +6,11 @@ package project;
 public class User 
 {
 	
-	private String name;
-	private int highScore;
-	private int wins;
-	private int games;
-	private double ratio;
+	String name;
+	int highScore;
+	int wins;
+	int games;
+	double ratio;
 	
 	/**
 	 * Constructor for user.
@@ -73,7 +73,9 @@ public class User
 	 */
 	public void updateRatio()
 	{
-		ratio = wins / games;
+		double doubWins = wins;
+		double doubGames = games;
+		ratio = doubWins / doubGames;
 	}
 	
 	/**
