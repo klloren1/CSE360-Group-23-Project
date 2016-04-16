@@ -1,10 +1,10 @@
 
                                                                    Status:
 •	Create base classes (SystemMain, Game, Player, User)        Finished
-•	Create Junit tests for base class functions                 To do
+•	Create Junit tests for base class functions                 In progress
 •	Create Menu GUI                                             Finished
 •	Create Game GUI                                             Finished
-•	Create build instructions                                   To do
+•	Create build instructions                                   Finished
 •	Create New User GUI                                         To do
 •	Add ability to save profiles to view statistics.            To do
 •	Create Stats GUI                                            To do
