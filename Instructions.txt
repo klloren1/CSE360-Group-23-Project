@@ -1,0 +1,9 @@
+Build instructions:
+A dice game executable is available in the repository for immediate access.
+If you wish to make a build from scratch, open the project in the eclipse IDE and export the code as a runnable jar file.
+
+How to play:
+Click start game at the menu to begin a game. 
+Player 1 will have control first. Click roll button to roll the dice. Click the respective lock buttons to add the die to your score.
+When a player clicks the roll button when they have no rolls remaining, control switches to the other player.
+The game will end after three rounds and declare the winner.
