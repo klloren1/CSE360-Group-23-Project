@@ -1,11 +1,14 @@
 package project;
 
+import java.io.*;
+
 /**
  * Class for containing information of individual users.
  */
-public class User 
+public class User implements java.io.Serializable
 {
 	
+	private static final long serialVersionUID = 1L;
 	String name;
 	int highScore;
 	int wins;
@@ -103,5 +106,23 @@ public class User
 	public double getRatio()
 	{
 		return ratio;
+	}
+	
+	/**
+	 * Method to save the user's data.
+	 */
+	public void saveUser()
+	{
+		try
+	      {
+	         FileOutputStream fileOut = new FileOutputStream("users/" + name + ".ser");
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(this);
+	         out.close();
+	         fileOut.close();
+	      }catch(IOException i)
+	      {
+	          i.printStackTrace();
+	      }
 	}
 }

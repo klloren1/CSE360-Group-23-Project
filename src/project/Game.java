@@ -246,6 +246,9 @@ public class Game {
 		player1.user.updateRatio();
 		player2.user.updateRatio();
 		
+		player1.user.saveUser();
+		player2.user.saveUser();
+		
 	}
 	
 }

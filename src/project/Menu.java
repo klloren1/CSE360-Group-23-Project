@@ -71,19 +71,21 @@ public class Menu implements ActionListener
 	{
 	    if ("start game".equals(e.getActionCommand())) 
 	    {
-			User test1 = new User("Player 1");
-			User test2 = new User("Player 2");
-			Game testGame = new Game(test1, test2);
-	    	testGame.startGame();
-	    	hideGUI();
+			GameSetupScreen testSetup = new GameSetupScreen();
+			testSetup.showGUI();
+			hideGUI();
 	    }
 	    else if ("view stats".equals(e.getActionCommand())) 
 	    {
-			
+			ViewStatsScreen testStats = new ViewStatsScreen();
+			testStats.showGUI();
+			hideGUI();
 	    }
 	    else if ("create user".equals(e.getActionCommand())) 
 	    {
-			
+			CreateUserScreen testUserCreate = new CreateUserScreen();
+			testUserCreate.showGUI();
+			hideGUI();
 	    }
 	        
 	} 

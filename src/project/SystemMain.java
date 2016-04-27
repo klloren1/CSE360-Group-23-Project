@@ -10,6 +10,7 @@ public class SystemMain {
     public static void main(String[] args) 
     {
     	menuGUI = new Menu();
-    	menuGUI.showGUI();        	
+    	menuGUI.showGUI();  
+    	
     }
 }
