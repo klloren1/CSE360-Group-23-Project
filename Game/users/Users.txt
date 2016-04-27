@@ -1,0 +1,2 @@
+User's will be placed in this folder.
+Ensure that the folder is on the same level as the dice game executable.
