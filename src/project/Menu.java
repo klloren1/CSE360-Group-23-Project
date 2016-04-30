@@ -16,9 +16,11 @@ public class Menu implements ActionListener
 	private JPanel buttonPane1;
 	private JPanel buttonPane2;
 	private JPanel buttonPane3;
+	private JPanel buttonPane4;
 	private JButton startGameButton;
 	private JButton viewStatsButton;
 	private JButton createUserButton;
+	private JButton rulesButton;
 	private JLabel label;
 	
 	public Menu()
@@ -29,9 +31,11 @@ public class Menu implements ActionListener
 		buttonPane1 = new JPanel(new GridBagLayout());
 		buttonPane2 = new JPanel(new GridBagLayout());
 		buttonPane3 = new JPanel(new GridBagLayout());
+		buttonPane4 = new JPanel(new GridBagLayout());
 		startGameButton = new JButton("Start Game");
 		viewStatsButton = new JButton("View Stats");
 		createUserButton = new JButton("Create User");
+		rulesButton = new JButton("Rules");
 		startGameButton.setPreferredSize(new Dimension(120,60));
 		startGameButton.setActionCommand("start game");
 		startGameButton.addActionListener(this);
@@ -39,8 +43,11 @@ public class Menu implements ActionListener
 		viewStatsButton.addActionListener(this);
 		createUserButton.setActionCommand("create user");
 		createUserButton.addActionListener(this);
+		rulesButton.setActionCommand("show rules");
+		rulesButton.addActionListener(this);
 		viewStatsButton.setPreferredSize(new Dimension(120,60));
 		createUserButton.setPreferredSize(new Dimension(120,60));
+		rulesButton.setPreferredSize(new Dimension(120,60));
 		label = new JLabel("Menu");
 		label.setFont(new Font("Sans Serif", Font.ITALIC, 50));
         label.setHorizontalAlignment(JLabel.CENTER);
@@ -50,9 +57,11 @@ public class Menu implements ActionListener
         frame.getContentPane().add(buttonPane1);
         frame.getContentPane().add(buttonPane2);
         frame.getContentPane().add(buttonPane3);
+        frame.getContentPane().add(buttonPane4);
         buttonPane1.add(startGameButton);
         buttonPane2.add(viewStatsButton);
         buttonPane3.add(createUserButton);
+        buttonPane4.add(rulesButton);
         textPane.add(label);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
@@ -86,6 +95,11 @@ public class Menu implements ActionListener
 			CreateUserScreen testUserCreate = new CreateUserScreen();
 			testUserCreate.showGUI();
 			hideGUI();
+	    }
+	    else if("show rules".equals(e.getActionCommand())) {
+	    	RulesScreen testRulesScreen = new RulesScreen();
+	    	testRulesScreen.showGUI();
+	    	hideGUI();
 	    }
 	        
 	} 

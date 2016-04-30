@@ -32,29 +32,29 @@ public class RulesScreen implements ActionListener{
 		rules5 = new JLabel("Only a maximum of 5 dice may be locked each round and once locked");
 		rules6 = new JLabel("they cannot be exchanged.");
 		rules7 = new JLabel("The winner is the player with the higher score after three rounds.");
-		rules1.setFont(new Font("Serif", Font.PLAIN, 20));
+		rules1.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules1.setHorizontalAlignment(JLabel.CENTER);
         rules1.setVerticalAlignment(JLabel.CENTER);
-        rules2.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules2.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules2.setHorizontalAlignment(JLabel.CENTER);
         rules2.setVerticalAlignment(JLabel.CENTER);
-        rules3.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules3.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules3.setHorizontalAlignment(JLabel.CENTER);
         rules3.setVerticalAlignment(JLabel.CENTER);
-        rules4.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules4.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules4.setHorizontalAlignment(JLabel.CENTER);
         rules4.setVerticalAlignment(JLabel.CENTER);
-        rules5.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules5.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules5.setHorizontalAlignment(JLabel.CENTER);
         rules5.setVerticalAlignment(JLabel.CENTER);
-        rules6.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules6.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules6.setHorizontalAlignment(JLabel.CENTER);
         rules6.setVerticalAlignment(JLabel.CENTER);
-        rules7.setFont(new Font("Serif", Font.PLAIN, 20));
+        rules7.setFont(new Font("Sans Serif", Font.ITALIC, 20));
         rules7.setHorizontalAlignment(JLabel.CENTER);
         rules7.setVerticalAlignment(JLabel.CENTER);
         menuButton = new JButton("Menu");
-		menuButton.setPreferredSize(new Dimension(120,80));
+		menuButton.setPreferredSize(new Dimension(120,60));
 		menuButton.setActionCommand("menu");
 		menuButton.addActionListener(this);
         frame.getContentPane().add(rulesPane);
@@ -65,7 +65,7 @@ public class RulesScreen implements ActionListener{
         rulesPane.add(rules5);
         rulesPane.add(rules6);
         rulesPane.add(menuButton);
-        frame.setSize(600, 600);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public void showGUI()
