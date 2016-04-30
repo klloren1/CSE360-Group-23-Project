@@ -17,4 +17,6 @@ Input the name of the user you wish to see stats for and click the select user b
 
 Create User-
 Input the name of a user to create.
-WARNING: Creating a user that already exists will wipe that players data.
+
+Rules-
+Shows the rules of the game.
