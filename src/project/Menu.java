@@ -42,7 +42,7 @@ public class Menu implements ActionListener
 		viewStatsButton.setPreferredSize(new Dimension(120,60));
 		createUserButton.setPreferredSize(new Dimension(120,60));
 		label = new JLabel("Menu");
-		label.setFont(new Font("Serif", Font.PLAIN, 50));
+		label.setFont(new Font("Sans Serif", Font.ITALIC, 50));
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
@@ -54,7 +54,7 @@ public class Menu implements ActionListener
         buttonPane2.add(viewStatsButton);
         buttonPane3.add(createUserButton);
         textPane.add(label);
-        frame.setSize(500, 400);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public void showGUI()

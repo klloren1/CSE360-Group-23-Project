@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 public class ViewStatsScreen implements ActionListener
 {
@@ -30,6 +31,8 @@ public class ViewStatsScreen implements ActionListener
 	private JLabel scoreLabel;
 	private JLabel gamesLabel;
 	private JLabel winsLabel;
+	private JLabel lossesLabel;
+	private JLabel tiesLabel;
 	private JLabel ratioLabel;
 	private JTextField textField;
 	
@@ -54,27 +57,37 @@ public class ViewStatsScreen implements ActionListener
 		menuButton.addActionListener(this);
 		
 		nameLabel = new JLabel("Name: ");
-		nameLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		nameLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
 		nameLabel.setHorizontalAlignment(JLabel.CENTER);
 		nameLabel.setVerticalAlignment(JLabel.CENTER);
 		
 		scoreLabel = new JLabel("High Score: ");
-		scoreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		scoreLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
 		scoreLabel.setHorizontalAlignment(JLabel.CENTER);
 		scoreLabel.setVerticalAlignment(JLabel.CENTER);
 		
 		gamesLabel = new JLabel("Games Played: ");
-		gamesLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		gamesLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
 		gamesLabel.setHorizontalAlignment(JLabel.CENTER);
 		gamesLabel.setVerticalAlignment(JLabel.CENTER);
 		
 		winsLabel = new JLabel("Wins: ");		
-		winsLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		winsLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
 		winsLabel.setHorizontalAlignment(JLabel.CENTER);
 		winsLabel.setVerticalAlignment(JLabel.CENTER);
 		
+		lossesLabel = new JLabel("Losses: ");		
+		lossesLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
+		lossesLabel.setHorizontalAlignment(JLabel.CENTER);
+		lossesLabel.setVerticalAlignment(JLabel.CENTER);
+		
+		tiesLabel = new JLabel("Ties: ");		
+		tiesLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
+		tiesLabel.setHorizontalAlignment(JLabel.CENTER);
+		tiesLabel.setVerticalAlignment(JLabel.CENTER);
+		
 		ratioLabel = new JLabel("Win-Loss Ratio: ");		
-		ratioLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		ratioLabel.setFont(new Font("Sans Serif", Font.ITALIC, 20));
 		ratioLabel.setHorizontalAlignment(JLabel.CENTER);
 		ratioLabel.setVerticalAlignment(JLabel.CENTER);
 		
@@ -88,11 +101,13 @@ public class ViewStatsScreen implements ActionListener
         statsPane.add(scoreLabel);
         statsPane.add(gamesLabel);
         statsPane.add(winsLabel);
+        statsPane.add(lossesLabel);
+        statsPane.add(tiesLabel);
         statsPane.add(ratioLabel);
         textFieldPane.add(textField);
         buttonPane.add(setUserButton);
         buttonPane.add(menuButton);
-        frame.setSize(500, 400);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public void showGUI()
@@ -132,6 +147,12 @@ public class ViewStatsScreen implements ActionListener
 		}
 		else//if user failed to load, create a new user object to be used
 		{
+			JOptionPane.showMessageDialog(
+					frame,
+					"We could not find " + textField.getText() + " in our system",
+					"Could Not Find User",
+					JOptionPane.ERROR_MESSAGE
+					);
 			return tempUser;
 		}
 	}
@@ -142,6 +163,8 @@ public class ViewStatsScreen implements ActionListener
 		scoreLabel.setText("High Score: " + user.getScore());
 		gamesLabel.setText("Games Played: " + user.getGames());
 		winsLabel.setText("Wins: " + user.getWins());
+		lossesLabel.setText("Losses: " + user.getLosses());
+		tiesLabel.setText("Ties: " + user.getTies());
 		ratioLabel.setText("Win-Loss Ratio: " + user.getRatio());
 	}
 		
@@ -151,6 +174,7 @@ public class ViewStatsScreen implements ActionListener
 	    {
 			user = getUser();
 			updateGUI();
+			textField.setText("");
 	    }
 	    if ("menu".equals(e.getActionCommand())) 
 	    {

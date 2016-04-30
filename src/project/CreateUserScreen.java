@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 public class CreateUserScreen implements ActionListener
 {
@@ -41,7 +45,7 @@ public class CreateUserScreen implements ActionListener
 		menuButton.setActionCommand("menu");
 		menuButton.addActionListener(this);
 		label = new JLabel("Enter Username");
-		label.setFont(new Font("Serif", Font.PLAIN, 50));
+		label.setFont(new Font("Sans Serif", Font.PLAIN, 50));
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
@@ -53,7 +57,7 @@ public class CreateUserScreen implements ActionListener
         buttonPane.add(createUserButton);
         buttonPane.add(menuButton);
         textPane.add(label);
-        frame.setSize(500, 400);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public void showGUI()
@@ -68,10 +72,47 @@ public class CreateUserScreen implements ActionListener
 	
 	public void actionPerformed(ActionEvent e) 
 	{
+User tempUser = new User("temp");
+		
+		//attempt to load user
+		try
+	      {
+	         FileInputStream fileIn = new FileInputStream("users/" + textField.getText() + ".ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         tempUser = (User) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      }catch(IOException i)
+	      {
+	         i.printStackTrace();
+	      }catch(ClassNotFoundException c)
+	      {
+	         System.out.println("Class not found");
+	         c.printStackTrace();
+	      }
+		
 	    if ("create user".equals(e.getActionCommand())) 
 	    {
-			User user = new User(textField.getText());
-			user.saveUser();
+	    	if(tempUser.getName().equals(textField.getText()))
+	    	{
+	    		JOptionPane.showMessageDialog(
+	    				frame,
+	    				textField.getText() + " is already a user",
+	    				"User Already Exists",
+	    				JOptionPane.ERROR_MESSAGE
+	    				);
+	    		textField.setText("");
+	    	}
+	    	else
+	    	{
+	    		User user = new User(textField.getText());
+	    		user.saveUser();
+	    		JOptionPane.showMessageDialog(
+	    				frame,
+	    				textField.getText() + " has successfully been added as a user"
+	    				);
+	    		textField.setText("");
+	    	}
 	    }
 	    if ("menu".equals(e.getActionCommand())) 
 	    {

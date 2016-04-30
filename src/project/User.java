@@ -1,6 +1,7 @@
 package project;
 
 import java.io.*;
+import java.text.DecimalFormat;
 
 /**
  * Class for containing information of individual users.
@@ -12,8 +13,11 @@ public class User implements java.io.Serializable
 	String name;
 	int highScore;
 	int wins;
+	int losses;
+	int ties;
 	int games;
 	double ratio;
+	private static DecimalFormat df = new DecimalFormat(".###");
 	
 	/**
 	 * Constructor for user.
@@ -24,6 +28,8 @@ public class User implements java.io.Serializable
 		this.name = name;
 		highScore = 0;
 		wins = 0;
+		losses = 0;
+		ties = 0;
 		games = 0;
 		ratio = 0;
 	}
@@ -64,6 +70,22 @@ public class User implements java.io.Serializable
 	}
 	
 	/**
+	 * Method to add a loss to the user's history.
+	 */
+	public void addLoss()
+	{
+		losses++;
+	}
+	
+	/**
+	 * Method to add a tie to the user's history.
+	 */
+	public void addTie()
+	{
+		ties++;
+	}
+	
+	/**
 	 * Method to add another game played to the user's history.
 	 */
 	public void addGame()
@@ -78,7 +100,9 @@ public class User implements java.io.Serializable
 	{
 		double doubWins = wins;
 		double doubGames = games;
+		
 		ratio = doubWins / doubGames;
+
 	}
 	
 	/**
@@ -88,6 +112,24 @@ public class User implements java.io.Serializable
 	public int getWins()
 	{
 		return wins;
+	}
+	
+	/**
+	 * Method to retrieve the user's losses.
+	 * @return Integer of user's losses.
+	 */
+	public int getLosses()
+	{
+		return losses;
+	}
+	
+	/**
+	 * Method to retrieve the user's ties.
+	 * @return Integer of user's ties.
+	 */
+	public int getTies()
+	{
+		return ties;
 	}
 	
 	/**
@@ -103,9 +145,9 @@ public class User implements java.io.Serializable
 	 * Method to retrieve the user's win to loss ratio.
 	 * @return double of user's win to loss ratio.
 	 */
-	public double getRatio()
+	public String getRatio()
 	{
-		return ratio;
+		return df.format(ratio);
 	}
 	
 	/**

@@ -12,7 +12,7 @@ public class GameScreen implements ActionListener
 {
 	
 	//GUI elements
-	private JFrame frame;
+	static JFrame frame;
 	private JLabel remaining;
 	private JLabel dice;
 	private JLabel playerInfo;
@@ -34,20 +34,20 @@ public class GameScreen implements ActionListener
 		frame = new JFrame("Dice Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
-		frame.setSize(600, 600);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		remainingPane = new JPanel(new GridBagLayout());
 		dicePane = new JPanel(new GridBagLayout());
 		buttonPane = new JPanel(new GridBagLayout());
 		playerInfoPane = new JPanel(new GridBagLayout());
 		roundPane = new JPanel(new GridBagLayout());
 		playerInfo = new JLabel("Player: Placeholder" + "         Score: " + 0);
-		playerInfo.setFont(new Font("Serif", Font.PLAIN, 30));
+		playerInfo.setFont(new Font("Sans Serif", Font.ITALIC, 30));
 		remaining = new JLabel("Rolls: " + 0 + "         Locks: " + 0);
-		remaining.setFont(new Font("Serif", Font.PLAIN, 30));
+		remaining.setFont(new Font("Sans Serif", Font.ITALIC, 30));
 		dice = new JLabel("Die 1: " + 0 + "         Die 2: " + 0);
-		dice.setFont(new Font("Serif", Font.PLAIN, 30));
+		dice.setFont(new Font("Sans Serif", Font.ITALIC, 30));
 		round = new JLabel("Round: " + 0);
-		round.setFont(new Font("Serif", Font.PLAIN, 30));
+		round.setFont(new Font("Sans Serif", Font.ITALIC, 30));
 		playerInfoPane.add(playerInfo);
 		remainingPane.add(remaining);
 		dicePane.add(dice);
@@ -130,7 +130,7 @@ public class GameScreen implements ActionListener
 		winnerButtonPanel.add(winnerButton);
 		
 		
-		winnerText.setFont(new Font("Serif", Font.PLAIN, 40));
+		winnerText.setFont(new Font("Sans Serif", Font.PLAIN, 40));
 		winnerButton.setActionCommand("menu");
 		winnerButton.addActionListener(this);
 		winnerButton.setPreferredSize(new Dimension(120,60));

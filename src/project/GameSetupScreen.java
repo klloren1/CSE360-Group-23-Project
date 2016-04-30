@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 public class GameSetupScreen implements ActionListener
 {
@@ -21,12 +22,13 @@ public class GameSetupScreen implements ActionListener
 	private JPanel textFieldPane1;
 	private JPanel textFieldPane2;
 	private JPanel buttonPane;
-	private JButton rulesButton;
 	private JButton startGameButton;
 	private JButton menuButton;
 	private JLabel label;
 	private JTextField textField1;
 	private JTextField textField2;
+	boolean User1Ready;
+	boolean User2Ready;
 	
 	public GameSetupScreen() 
 	{
@@ -36,20 +38,16 @@ public class GameSetupScreen implements ActionListener
 		textFieldPane1 = new JPanel(new GridBagLayout());
 		textFieldPane2 = new JPanel(new GridBagLayout());
 		buttonPane = new JPanel(new GridBagLayout());
-		rulesButton = new JButton("Rules");
-		rulesButton.setPreferredSize(new Dimension(120,40));
-		rulesButton.setActionCommand("rules");
-		rulesButton.addActionListener(this);
 		startGameButton = new JButton("Start Game");
-		startGameButton.setPreferredSize(new Dimension(120,40));
+		startGameButton.setPreferredSize(new Dimension(120,60));
 		startGameButton.setActionCommand("start game");
 		startGameButton.addActionListener(this);
 		menuButton = new JButton("Menu");
-		menuButton.setPreferredSize(new Dimension(120,40));
+		menuButton.setPreferredSize(new Dimension(120,60));
 		menuButton.setActionCommand("menu");
 		menuButton.addActionListener(this);
 		label = new JLabel("Enter Usernames");
-		label.setFont(new Font("Serif", Font.PLAIN, 50));
+		label.setFont(new Font("Sans Serif", Font.ITALIC, 50));
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
@@ -61,16 +59,17 @@ public class GameSetupScreen implements ActionListener
         frame.getContentPane().add(buttonPane);
         textFieldPane1.add(textField1);
         textFieldPane2.add(textField2);
-        buttonPane.add(rulesButton);
         buttonPane.add(startGameButton);
         buttonPane.add(menuButton);
         textPane.add(label);
-        frame.setSize(500, 400);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	public void showGUI()
 	{
 		frame.setVisible(true);
+		User1Ready = false;
+		User2Ready = false;
 	}
 	
 	public void hideGUI()
@@ -101,18 +100,31 @@ public class GameSetupScreen implements ActionListener
 		
 		if(tempUser.getName().equals(textField1.getText()))
 		{
+			User1Ready = true;
 			return tempUser;
 		}
 		else//if user failed to load, create a new user object to be used
 		{
-			tempUser = new User(textField1.getText());
-			return tempUser;
+			int n = JOptionPane.showConfirmDialog(
+					frame, 
+					"We could not find " + textField1.getText() + " in our system, would you like to create a new user with this name?", 
+					"Could Not Find User",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.ERROR_MESSAGE);
+			if(n == JOptionPane.YES_OPTION) {
+				tempUser = new User(textField1.getText());
+				User1Ready = true;
+				return tempUser;
+			}
+			else {
+				return tempUser;
+			}
 		}
 	}
 	
 	public User getUser2()
 	{
-User tempUser = new User("temp");
+		User tempUser = new User("temp");
 		
 		//attempt to load user
 		try
@@ -133,12 +145,25 @@ User tempUser = new User("temp");
 		
 		if(tempUser.getName().equals(textField2.getText()))
 		{
+			User2Ready = true;
 			return tempUser;
 		}
 		else//if user failed to load, create a new user object to be used
 		{
-			tempUser = new User(textField2.getText());
-			return tempUser;
+			int n = JOptionPane.showConfirmDialog(
+					frame, 
+					"We could not find " + textField2.getText() + " in our system, would you like to create a new user with this name?", 
+					"Could Not Find User",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.ERROR_MESSAGE);
+			if(n == JOptionPane.YES_OPTION) {
+				tempUser = new User(textField2.getText());
+				User2Ready = true;
+				return tempUser;
+			}
+			else {
+				return tempUser;
+			}
 		}
 	}
 	
@@ -148,20 +173,16 @@ User tempUser = new User("temp");
 	    {
 			User user1 = getUser1();
 			User user2 = getUser2();
-			Game testGame = new Game(user1, user2);
-	    	testGame.startGame();
-	    	hideGUI();
+			if(User1Ready == true && User2Ready == true) {
+				Game testGame = new Game(user1, user2);
+	    		testGame.startGame();
+	    		hideGUI();
+			}
 	    }
 	    if ("menu".equals(e.getActionCommand())) 
 	    {
 			hideGUI();
 			SystemMain.menuGUI.showGUI();
-	    }
-	    if ("rules".equals(e.getActionCommand())) 
-	    {
-	    	hideGUI();
-	        RulesScreen rulesGUI = new RulesScreen();
-	       	rulesGUI.showGUI();
 	    }
 	} 
 }
