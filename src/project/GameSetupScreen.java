@@ -21,6 +21,7 @@ public class GameSetupScreen implements ActionListener
 	private JPanel textFieldPane1;
 	private JPanel textFieldPane2;
 	private JPanel buttonPane;
+	private JButton rulesButton;
 	private JButton startGameButton;
 	private JButton menuButton;
 	private JLabel label;
@@ -35,12 +36,16 @@ public class GameSetupScreen implements ActionListener
 		textFieldPane1 = new JPanel(new GridBagLayout());
 		textFieldPane2 = new JPanel(new GridBagLayout());
 		buttonPane = new JPanel(new GridBagLayout());
+		rulesButton = new JButton("Rules");
+		rulesButton.setPreferredSize(new Dimension(120,40));
+		rulesButton.setActionCommand("rules");
+		rulesButton.addActionListener(this);
 		startGameButton = new JButton("Start Game");
-		startGameButton.setPreferredSize(new Dimension(120,60));
+		startGameButton.setPreferredSize(new Dimension(120,40));
 		startGameButton.setActionCommand("start game");
 		startGameButton.addActionListener(this);
 		menuButton = new JButton("Menu");
-		menuButton.setPreferredSize(new Dimension(120,60));
+		menuButton.setPreferredSize(new Dimension(120,40));
 		menuButton.setActionCommand("menu");
 		menuButton.addActionListener(this);
 		label = new JLabel("Enter Usernames");
@@ -56,6 +61,7 @@ public class GameSetupScreen implements ActionListener
         frame.getContentPane().add(buttonPane);
         textFieldPane1.add(textField1);
         textFieldPane2.add(textField2);
+        buttonPane.add(rulesButton);
         buttonPane.add(startGameButton);
         buttonPane.add(menuButton);
         textPane.add(label);
@@ -150,6 +156,12 @@ User tempUser = new User("temp");
 	    {
 			hideGUI();
 			SystemMain.menuGUI.showGUI();
+	    }
+	    if ("rules".equals(e.getActionCommand())) 
+	    {
+	    	hideGUI();
+	        RulesScreen rulesGUI = new RulesScreen();
+	       	rulesGUI.showGUI();
 	    }
 	} 
 }
