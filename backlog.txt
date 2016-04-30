@@ -5,6 +5,6 @@
 •	Create Menu GUI                                             Finished
 •	Create Game GUI                                             Finished
 •	Create build instructions                                   Finished
-•	Create New User GUI                                         To do
-•	Add ability to save profiles to view statistics.            To do
-•	Create Stats GUI                                            To do
+•	Create New User GUI                                         Finished
+•	Add ability to save profiles to view statistics.            Finished
+•	Create Stats GUI                                            Finished
